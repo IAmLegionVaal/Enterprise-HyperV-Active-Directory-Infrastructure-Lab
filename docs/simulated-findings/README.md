@@ -25,6 +25,8 @@ This pack demonstrates how the Enterprise Hyper-V and Active Directory Infrastru
 4. [Security, Monitoring, and Automation findings](04-security-monitoring-automation.md)
 5. [Troubleshooting and Disaster Recovery findings](05-troubleshooting-and-disaster-recovery.md)
 6. [Portfolio and Final Validation summary](06-portfolio-and-final-validation.md)
+7. [Core Infrastructure and Services task matrix](07-task-matrix-core-services.md)
+8. [Security, Recovery, and Portfolio task matrix](08-task-matrix-security-recovery-portfolio.md)
 
 ## Simulated completion convention
 
