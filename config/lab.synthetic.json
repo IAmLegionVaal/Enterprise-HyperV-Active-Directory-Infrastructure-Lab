@@ -1,0 +1,43 @@
+{
+  "Classification": "SIMULATED PORTFOLIO DATA",
+  "LabName": "CORP-LAB-V2",
+  "Host": {
+    "TotalMemoryGB": 64,
+    "ReservedMemoryGB": 8
+  },
+  "Network": {
+    "Subnet": "10.10.0.0/24",
+    "Gateway": "10.10.0.1",
+    "DnsServers": ["10.10.0.10", "8.8.8.8"]
+  },
+  "VirtualMachines": [
+    {
+      "Name": "DC01",
+      "Generation": 2,
+      "StartupMemoryGB": 4,
+      "IPv4Address": "10.10.0.10",
+      "Roles": ["DomainController", "DNS"]
+    },
+    {
+      "Name": "DC02",
+      "Generation": 2,
+      "StartupMemoryGB": 4,
+      "IPv4Address": "10.10.0.11",
+      "Roles": ["DomainController", "DNS"]
+    },
+    {
+      "Name": "MGMT01",
+      "Generation": 2,
+      "StartupMemoryGB": 8,
+      "IPv4Address": "10.10.0.11",
+      "Roles": ["Management"]
+    },
+    {
+      "Name": "FILE01",
+      "Generation": 1,
+      "StartupMemoryGB": 8,
+      "IPv4Address": "10.10.0.30",
+      "Roles": ["FileServices"]
+    }
+  ]
+}
