@@ -10,6 +10,13 @@ Describe 'EnterpriseLab module' {
         Get-Module EnterpriseLab | Should -Not -BeNullOrEmpty
     }
 
+    It 'exports the phase-two public commands' {
+        $commands = Get-Command -Module EnterpriseLab | Select-Object -ExpandProperty Name
+        foreach ($name in @('Get-EhlHostReadiness','New-EhlHtmlReport','Invoke-EhlProvisioning')) {
+            $commands | Should -Contain $name
+        }
+    }
+
     It 'creates normalized findings' {
         $finding = New-EhlFinding -Check Test -Title 'Synthetic plan issue' -Severity Medium -Confidence 80 -Evidence Evidence -Impact Impact -Recommendation Recommendation
         $finding.SeverityRank | Should -Be 3
@@ -27,10 +34,11 @@ Describe 'EnterpriseLab module' {
         $result.Findings.Title | Should -Contain 'Generation 1 VM planned: FILE01'
     }
 
-    It 'exports JSON and CSV validation evidence' {
+    It 'exports JSON, CSV, and HTML validation evidence' {
         $outputPath = Join-Path $TestDrive 'validation'
         Test-EhlPlan -Configuration $script:Configuration -OutputPath $outputPath | Out-Null
         Test-Path (Join-Path $outputPath 'lab-plan-validation.json') | Should -BeTrue
         Test-Path (Join-Path $outputPath 'findings.csv') | Should -BeTrue
+        Test-Path (Join-Path $outputPath 'report.html') | Should -BeTrue
     }
 }
